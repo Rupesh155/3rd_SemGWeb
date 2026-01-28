@@ -32,11 +32,12 @@
    let cellQ=[[0,0]]
    let gameOver=false
    let direction='right'
+   let randomC=generateRandomCell()
 
  let id=  setInterval(()=>{
     draw()
     update()
-   },500)
+   },200)
      document.addEventListener("keydown",function(e){
         // console.log(e);
         if(e.key=='ArrowDown'){
@@ -57,10 +58,13 @@
         clearInterval(id)
         return;
     }
+       pen.fillStyle='red'
     pen.clearRect(0,0,1000,600)
     for(let i of cellQ){
         pen.fillRect(i[0],i[1],cell,cell)
     }
+    pen.fillStyle='green'
+    pen.fillRect(randomC[0],randomC[1],cell,cell)
 
    }
 
@@ -98,8 +102,17 @@
         gameOver=true
     }
  }
+
+ if(newX==randomC[0]  && nexY==randomC[1]){
+    randomC=generateRandomCell()
+    
+ }
+ else{
+    cellQ.shift()
+
+ }
  cellQ.push([newX,nexY])
- cellQ.shift()
+
    }
 
 // let arr=[1,2,3,4];
@@ -108,7 +121,14 @@
     
 //    }
 
+     function generateRandomCell(){
+        return[
+            Math.floor(Math.random()*650/50)*50,
+            Math.floor(Math.random()*350/50)*50
+        ]
+     }
+
+    //  console.log(generateRandomCell());
+     
 
 
-// let x= Math.random()
-// console.log(x);
