@@ -28,6 +28,7 @@
    let canvas=   document.querySelector("canvas")
   let pen=  canvas.getContext("2d")
    pen.fillStyle='gold'
+   let count=0;
    let cell=50
    let cellQ=[[0,0]]
    let gameOver=false
@@ -56,6 +57,8 @@
     // for()
     if(gameOver==true){
         clearInterval(id)
+        pen.fillStyle='snow'
+        pen.fillText("Game Over" ,100,300)
         return;
     }
        pen.fillStyle='red'
@@ -63,8 +66,11 @@
     for(let i of cellQ){
         pen.fillRect(i[0],i[1],cell,cell)
     }
+       pen.font='20px sans-sarif'
+        pen.fillText(`Score ${count}`,40,100)
     pen.fillStyle='green'
     pen.fillRect(randomC[0],randomC[1],cell,cell)
+
 
    }
 
@@ -105,7 +111,8 @@
 
  if(newX==randomC[0]  && nexY==randomC[1]){
     randomC=generateRandomCell()
-    
+    count=count+1;
+
  }
  else{
     cellQ.shift()
@@ -121,6 +128,7 @@
     
 //    }
 
+// https://github.com/Rupesh155
      function generateRandomCell(){
         return[
             Math.floor(Math.random()*650/50)*50,
