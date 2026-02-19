@@ -1,4 +1,4 @@
-
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,5 +59,65 @@ img{
         </div>
     </section>
     
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 900px;
+        }
+        #main{
+            height: 400px;
+            width: 300px;
+            /* border: 2px solid rebeccapurple; */
+            position: relative;
+            margin: 0px auto;
+            transition: 3s;
+            transform-style: preserve-3d;
+        }
+        #main:hover{
+            transform: rotateY(180deg);
+        }
+        #child_a{
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            z-index: 3;
+            backface-visibility: hidden;
+
+        }
+        #child_b{
+            height: 50%;
+            width: 100%;
+            background-color: aqua;
+            position: absolute;
+            z-index: 2;
+            transform: rotateY(180deg);
+            
+        }
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="child_a">
+            <img  src="https://images.unsplash.com/photo-1761839257661-c2392c65ea72?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+        </div>
+        <div id="child_b">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, facere?</p>
+        </div>
+
+    </div>
 </body>
 </html>
